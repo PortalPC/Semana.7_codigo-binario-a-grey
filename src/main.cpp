@@ -35,8 +35,17 @@ while(1){
 cuenta_gray = cuenta_binario ^ (cuenta_binario << 1); // Convertir a Gray
 if(a ==1){
   PORTD |=((cuenta_binario | 0x00) << 4);
+  PORTD &= ((cuenta_binario | 0x00) << 4);
+  PORTB |=(cuenta_gray |0x00);
+  PORTB &= (cuenta_gray |0xF0);
 
+
+
+}else{
+  PORTD &= ~(0xF0);
+  PORTB = ~(0x0F);
 }
+_delay_ms(1000);
 }
   }
   
